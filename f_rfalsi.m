@@ -1,8 +1,8 @@
 function [c, yc, OUT] = f_rfalsi(fun, a, b, k_max, tol)
 
 
-ya = eval([fun '(a)']) ;
-yb = eval([fun '(b)']) ;
+ya = feval(fun, a) ;
+yb = feval(fun, b) ;
 
 e = b - a;
 
@@ -15,7 +15,7 @@ disp('Krok a  b c yc  blad blod_rzczywisty') ;
 for ii=1:1:k_max
   e = e / 2;
 	c = b - (b - a) / (yb - ya) * yb;
-  yc = eval([fun '(c)']) ; % fun1(c) ;
+  yc = feval(fun, c) ; % fun1(c) ;
 
   blad = (1 / 2^ii) * (b - a);
   blad_rzeczywisty = 5.60979 - c;
